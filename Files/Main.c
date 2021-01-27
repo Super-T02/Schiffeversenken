@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "Global.h"
 
 int main()
 {
