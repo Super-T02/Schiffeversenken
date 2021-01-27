@@ -1,2 +1,2 @@
 # Schiffeversenken
-Das Spiel Schiffe versenken
+Das Spiel Schiffeversenken
