@@ -13,3 +13,11 @@ int playerA[ARRAYSIZE][ARRAYSIZE];
 int playerB[ARRAYSIZE][ARRAYSIZE];
 
 	
+
+
+
+
+//Header
+#include "End.h"
+#include "Play.h"
+#include "Start.h"
