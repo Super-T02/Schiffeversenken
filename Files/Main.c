@@ -12,5 +12,5 @@ int main()
 		}
 	}
 
-
+	grafikStart("", playerA, PLAYER_A);
 }
