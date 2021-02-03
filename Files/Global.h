@@ -1,10 +1,13 @@
 //Bibs
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //Constants
 #define ARRAYSIZE 12
-#define MESSAGE_LENGTH 100
+#define SHIPTYPES 4
+#define MESSAGE_LENGTH 10000
+#define INPUT_LENGTH 10
 
 //Enums
 enum FELDNUMBER { A = 0, B, C, D, E, F, G, H, I, J, K, L };
@@ -15,10 +18,14 @@ enum PLAYER {PLAYER_A = 1, PLAYER_B};
 	//Player A
 	int playerA[ARRAYSIZE][ARRAYSIZE];
 
+
 	//Player B
 	int playerB[ARRAYSIZE][ARRAYSIZE];
 
-	
+
+//global Variables
+	char message[MESSAGE_LENGTH];
+
 
 //Header
 #include "End.h"

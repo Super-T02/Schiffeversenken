@@ -12,5 +12,7 @@ int main()
 		}
 	}
 
-	grafikStart("", playerA, PLAYER_A);
+	strcpy_s(message, MESSAGE_LENGTH, "");
+
+	managerStart();
 }
