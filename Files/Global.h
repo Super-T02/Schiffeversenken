@@ -17,11 +17,11 @@ enum PLAYER {PLAYER_A = 1, PLAYER_B};
 //Array defenition
 	//Player A
 	int playerA[ARRAYSIZE][ARRAYSIZE];
-
+	int numberOfShips_A;
 
 	//Player B
 	int playerB[ARRAYSIZE][ARRAYSIZE];
-
+	int numberOfShips_B;
 
 //global Variables
 	char message[MESSAGE_LENGTH];

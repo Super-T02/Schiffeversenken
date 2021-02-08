@@ -14,5 +14,8 @@ int main()
 
 	strcpy_s(message, MESSAGE_LENGTH, "");
 
-	managerStart();
+	
+
+	//managerStart();
+	grafikPlay(0);
 }

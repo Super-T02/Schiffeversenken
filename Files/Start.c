@@ -179,7 +179,7 @@ int setShip(int player, int shiplength)
 	}
 	else
 	{
-		setMessage( "Schiff darf nicht plaziert werden. Bitte nur von Links nach Rechts und Oben nach Unten.\n");
+		setMessage( "Schiff darf nicht plaziert werden. Bitte nur von Links nach Rechts und Oben nach Unten.\nAusserdem beim Schiffeplatzieren die Plazierregeln beachten!\n");
 		return EXIT_FAILURE;
 	}
 }
@@ -411,7 +411,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 					}
 				}
 				//above
-				else if (yEnd + 1 > 12)
+				else if (yEnd + 1 > 11)
 				{
 					if (/*actual*/playerA[y][xStart] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart + 1] != ship)
 					{
@@ -436,7 +436,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 				}
 			}
 			//rigth side
-			else if (xStart + 1 > 12)
+			else if (xStart + 1 > 11)
 			{
 				//under
 				if (yStart - 1 < 0)
@@ -452,7 +452,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 
 				}
 				//above
-				else if (yEnd + 1 > 12)
+				else if (yEnd + 1 > 11)
 				{
 					if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*Corners*/ playerA[yStart - 1][xStart - 1] != ship)
 					{
@@ -489,7 +489,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 				}
 			}
 			//above
-			else if (yEnd + 1 > 12)
+			else if (yEnd + 1 > 11)
 			{
 				if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship && playerA[yStart - 1][xStart + 1] != ship)
 				{
@@ -532,7 +532,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 					}
 				}
 				//right
-				else if (xEnd + 1 > 12)
+				else if (xEnd + 1 > 11)
 				{
 					if (/*actual*/playerA[yStart][x] != ship  && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*Corners*/ playerA[yStart + 1][xStart - 1] != ship)
 					{
@@ -573,7 +573,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 
 				}
 				//right
-				else if (xEnd + 1 > 12)
+				else if (xEnd + 1 > 11)
 				{
 					if (/*actual*/playerA[yStart][x] != ship  && /*left*/playerA[yStart][xStart - 1] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship)
 					{
@@ -896,7 +896,7 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 //Delete Message
 void clearMessage()
 {
-	strcpy_s(message, MESSAGE_LENGTH, "");
+	strcpy_s(message, MESSAGE_LENGTH, "\n");
 }
 
 //set Message

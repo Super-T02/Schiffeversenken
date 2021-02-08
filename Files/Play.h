@@ -1,1 +1,1 @@
-
+void grafikPlay(int actualPlayer);
