@@ -16,6 +16,6 @@ int main()
 
 	
 
-	//managerStart();
-	grafikPlay(0);
+	managerStart();
+	grafikPlay(1);
 }
