@@ -2,6 +2,8 @@
 
 int main()
 {
+	int winner;
+
 	//Arrays
 	for (size_t i = 0; i < ARRAYSIZE; i++)
 	{
@@ -12,10 +14,14 @@ int main()
 		}
 	}
 
+	//Ships
+	numberOfShips_A = NUMBER_OF_SHIPS;
+	numberOfShips_B = NUMBER_OF_SHIPS;
+
 	strcpy_s(message, MESSAGE_LENGTH, "");
 
 	
 
-	managerStart();
-	grafikPlay(1);
+	//managerStart();
+	winner = managerPlay();
 }

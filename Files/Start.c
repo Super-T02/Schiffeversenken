@@ -234,13 +234,14 @@ int scanKoordinate(int* x, int *y)
 		return EXIT_FAILURE;
 		break;
 	}
-	*y = *y - 1;
-	//*x = *x - 1;
 	
-	if (*y > 12)
+	
+	if (*y > 12 || *y < 1)
 	{
 		return EXIT_FAILURE;
 	}
+
+	*y = *y - 1;
 
 	return EXIT_SUCCESS;
 }

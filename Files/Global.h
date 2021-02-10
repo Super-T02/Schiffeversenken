@@ -8,10 +8,11 @@
 #define SHIPTYPES 4
 #define MESSAGE_LENGTH 10000
 #define INPUT_LENGTH 10
+#define NUMBER_OF_SHIPS 10
 
 //Enums
 enum FELDNUMBER { A = 0, B, C, D, E, F, G, H, I, J, K, L };
-enum SCHIFFSTATUS {neutral = 0, ship, fail, hit, destroyed};
+enum SCHIFFSTATUS {neutral = 0, ship, fail, hit, destroyed, allreadyTyped};
 enum PLAYER {PLAYER_A = 1, PLAYER_B};
 
 //Array defenition
