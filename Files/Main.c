@@ -5,7 +5,7 @@ int main()
 	int winner;
 	char input;
 
-	printf("Bitte Enter Drücken um zu starten....");
+	printf("Bitte Enter Druecken um zu starten....");
 	getc(stdin);
 
 	do
