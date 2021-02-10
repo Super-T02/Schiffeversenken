@@ -241,8 +241,6 @@ int scanKoordinate(int* x, int *y)
 		return EXIT_FAILURE;
 	}
 
-	*y = *y - 1;
-
 	return EXIT_SUCCESS;
 }
 
@@ -267,16 +265,16 @@ void grafikStart(int player[ARRAYSIZE][ARRAYSIZE], int actualPlayer)
 	printf("     |  A  |  B  |  C  |  D  |  E  |  F  |  G  |  H  |  I  |  J  |  K  |  L  |\n");
 	printf("-----------------------------------------------------------------------------\n");
 
-	for (int i = 0; i < ARRAYSIZE ; i++)
+	for (int i = 0; i < ARRAYSIZE - 2; i++)
 	{
 		printf(" %02d  |", i + 1);
-		for (int j = 0; j < ARRAYSIZE; j++)
+		for (int j = 0; j < ARRAYSIZE - 2; j++)
 		{
-			if (player[i][j] == neutral)
+			if (player[i + 1][j + 1] == neutral)
 			{
 				printf("     |");
 			}
-			else if (player[i][j] == ship)
+			else if (player[i + 1][j + 1] == ship)
 			{
 				printf("  S  |");
 			}
@@ -396,244 +394,29 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 		//Vertikal
 		if (vertikal == 0)
 		{
-			//left side
-			if (xStart - 1 < 0)
+			
+			if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship && playerA[yStart - 1][xStart + 1] != ship && playerA[yEnd + 1][xStart - 1] != ship && playerA[yEnd + 1][xStart + 1] != ship)
 			{
-				//under
-				if (yStart - 1 < 0)
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/playerA[yEnd + 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//above
-				else if (yEnd + 1 > 11)
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart + 1] != ship && playerA[yEnd + 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
+				return EXIT_SUCCESS;
 			}
-			//rigth side
-			else if (xStart + 1 > 11)
-			{
-				//under
-				if (yStart - 1 < 0)
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/playerA[yEnd + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-
-				}
-				//above
-				else if (yEnd + 1 > 11)
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*Corners*/ playerA[yStart - 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship && playerA[yEnd + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-			}
-			//under
-			else if (yStart - 1 < 0)
-			{
-				if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/  playerA[yEnd + 1][xStart - 1] != ship && playerA[yEnd + 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//above
-			else if (yEnd + 1 > 11)
-			{
-				if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship && playerA[yStart - 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//default
 			else
 			{
-				if (/*actual*/playerA[y][xStart] != ship &&/*left*/ playerA[y][xStart - 1] != ship &&/*right*/ playerA[y][xStart + 1] != ship && /*under*/playerA[yStart - 1][xStart] != ship && /*above*/playerA[yEnd + 1][xStart] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship && playerA[yStart - 1][xStart + 1] != ship && playerA[yEnd + 1][xStart - 1] != ship && playerA[yEnd + 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
+				return EXIT_FAILURE;//exits
 			}
+			
 		}
 		//Horizontal
 		else if (vertikal == 1)
 		{
-			//upper
-			if (yStart - 1 < 0)
+			if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart + 1][xStart - 1] != ship && playerA[yStart - 1][xStart - 1] != ship && playerA[yStart + 1][xEnd + 1] != ship && playerA[yStart - 1][xEnd + 1] != ship)
 			{
-				//left
-				if (xStart - 1 < 0)
-				{
-					if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*Corners*/ playerA[yStart + 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//right
-				else if (xEnd + 1 > 11)
-				{
-					if (/*actual*/playerA[yStart][x] != ship  && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*Corners*/ playerA[yStart + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*Corners*/ playerA[yStart + 1][xStart - 1] != ship && playerA[yStart + 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
+				return EXIT_SUCCESS;
 			}
-			//lower
-			else if (yStart + 1 > 11)
-			{
-				//left
-				if (xStart - 1 < 0)
-				{
-					if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship &&  /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/  playerA[yStart - 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-
-				}
-				//right
-				else if (xEnd + 1 > 11)
-				{
-					if (/*actual*/playerA[yStart][x] != ship  && /*left*/playerA[yStart][xStart - 1] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship && /*left*/playerA[yStart][xStart - 1] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart - 1][xStart - 1] != ship  && playerA[yStart - 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-			}
-			//left
-			else if (xStart - 1 < 0)
-			{
-				if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship  && /*under*/playerA[yStart + 1][x] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/   playerA[yStart + 1][xEnd + 1] != ship && playerA[yStart - 1][xEnd + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//right
-			else if (xEnd + 1 > 11)
-			{
-				if (/*actual*/playerA[yStart][x] != ship  && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart + 1][xStart - 1] != ship && playerA[yStart - 1][xStart - 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//default
 			else
 			{
-				if (/*actual*/playerA[yStart][x] != ship &&/*right*/ playerA[yStart][xEnd + 1] != ship && /*left*/playerA[yStart][xStart - 1] != ship && /*under*/playerA[yStart + 1][x] != ship && /*above*/playerA[yStart - 1][x] != ship &&/*Corners*/ playerA[yStart + 1][xStart - 1] != ship && playerA[yStart - 1][xStart - 1] != ship && playerA[yStart + 1][xEnd + 1] != ship && playerA[yStart - 1][xEnd + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
+				return EXIT_FAILURE;//exits
 			}
+			
 		}
 		//Default
 		else
@@ -646,243 +429,26 @@ int boarderCheck(int xStart, int yStart, int xEnd, int yEnd, int x, int y, int v
 		//Vertikal
 		if (vertikal == 0)
 		{
-			//left side
-			if (xStart - 1 < 0)
+			if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship && playerB[yStart - 1][xStart + 1] != ship && playerB[yEnd + 1][xStart - 1] != ship && playerB[yEnd + 1][xStart + 1] != ship)
 			{
-				//under
-				if (yStart - 1 < 0)
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/playerB[yEnd + 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//above
-				else if (yEnd + 1 > 11)
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart + 1] != ship && playerB[yEnd + 1][xStart + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
+				return EXIT_SUCCESS;
 			}
-			//rigth side
-			else if (xStart + 1 > 11)
-			{
-				//under
-				if (yStart - 1 < 0)
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/playerB[yEnd + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-
-				}
-				//above
-				else if (yEnd + 1 > 11)
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*Corners*/ playerB[yStart - 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship && playerB[yEnd + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-			}
-			//under
-			else if (yStart - 1 < 0)
-			{
-				if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/  playerB[yEnd + 1][xStart - 1] != ship && playerB[yEnd + 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//above
-			else if (yEnd + 1 > 11)
-			{
-				if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship && playerB[yStart - 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//default
 			else
 			{
-				if (/*actual*/playerB[y][xStart] != ship &&/*left*/ playerB[y][xStart - 1] != ship &&/*right*/ playerB[y][xStart + 1] != ship && /*under*/playerB[yStart - 1][xStart] != ship && /*above*/playerB[yEnd + 1][xStart] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship && playerB[yStart - 1][xStart + 1] != ship && playerB[yEnd + 1][xStart - 1] != ship && playerB[yEnd + 1][xStart + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
+				return EXIT_FAILURE;//exits
 			}
+			
 		}
 		//Horizontal
 		else if (vertikal == 1)
 		{
-			//upper
-			if (yStart - 1 < 0)
+			if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/ playerB[yStart + 1][xStart - 1] != ship && playerB[yStart - 1][xStart - 1] != ship && playerB[yStart + 1][xEnd + 1] != ship && playerB[yStart - 1][xEnd + 1] != ship)
 			{
-				//left
-				if (xStart - 1 < 0)
-				{
-					if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*Corners*/ playerB[yStart + 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//right
-				else if (xEnd + 1 > 11)
-				{
-					if (/*actual*/playerB[yStart][x] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*Corners*/ playerB[yStart + 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*Corners*/ playerB[yStart + 1][xStart - 1] != ship && playerB[yStart + 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
+				return EXIT_SUCCESS;
 			}
-			//lower
-			else if (yStart + 1 > 11)
-			{
-				//left
-				if (xStart - 1 < 0)
-				{
-					if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship &&  /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/  playerB[yStart - 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-
-				}
-				//right
-				else if (xEnd + 1 > 11)
-				{
-					if (/*actual*/playerB[yStart][x] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-				//Default
-				else
-				{
-					if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/ playerB[yStart - 1][xStart - 1] != ship && playerB[yStart - 1][xEnd + 1] != ship)
-					{
-						return EXIT_SUCCESS;
-					}
-					else
-					{
-						return EXIT_FAILURE;//exits
-					}
-				}
-			}
-			//left
-			else if (xStart - 1 < 0)
-			{
-				if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/   playerB[yStart + 1][xEnd + 1] != ship && playerB[yStart - 1][xEnd + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//right
-			else if (xEnd + 1 > 11)
-			{
-				if (/*actual*/playerB[yStart][x] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/ playerB[yStart + 1][xStart - 1] != ship && playerB[yStart - 1][xStart - 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
-			}
-			//default
 			else
 			{
-				if (/*actual*/playerB[yStart][x] != ship &&/*right*/ playerB[yStart][xEnd + 1] != ship && /*left*/playerB[yStart][xStart - 1] != ship && /*under*/playerB[yStart + 1][x] != ship && /*above*/playerB[yStart - 1][x] != ship &&/*Corners*/ playerB[yStart + 1][xStart - 1] != ship && playerB[yStart - 1][xStart - 1] != ship && playerB[yStart + 1][xEnd + 1] != ship && playerB[yStart - 1][xEnd + 1] != ship)
-				{
-					return EXIT_SUCCESS;
-				}
-				else
-				{
-					return EXIT_FAILURE;//exits
-				}
+				return EXIT_FAILURE;//exits
 			}
 		}
 		//Default

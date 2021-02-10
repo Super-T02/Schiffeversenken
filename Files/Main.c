@@ -22,6 +22,7 @@ int main()
 
 	
 
-	//managerStart();
+	managerStart();
 	winner = managerPlay();
+	printf("%d", winner);
 }
