@@ -8,7 +8,7 @@
 #define SHIPTYPES 4
 #define MESSAGE_LENGTH 10000
 #define INPUT_LENGTH 10
-#define NUMBER_OF_SHIPS 1
+#define NUMBER_OF_SHIPS 10
 
 //Enums
 enum FELDNUMBER { A = 1, B, C, D, E, F, G, H, I, J, K, L };
