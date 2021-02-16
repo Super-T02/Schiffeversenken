@@ -372,7 +372,7 @@ int checkDestroy(int actualPlayer, int x, int y)
 
 			return EXIT_SUCCESS;
 		}
-		//Case for a ship of the legth 2
+		//Case for a ship of the length 2
 		else if (playerB[y + 1][x] == ship)
 		{
 			return EXIT_FAILURE;
@@ -399,7 +399,7 @@ int checkDestroy(int actualPlayer, int x, int y)
 
 			return EXIT_SUCCESS;
 		}
-		//Case for a ship of the legth 2
+		//Case for a ship of the length 2
 		else if (playerB[y][x + 1] == ship)
 		{
 			return EXIT_FAILURE;
