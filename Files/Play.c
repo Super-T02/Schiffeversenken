@@ -45,6 +45,16 @@ int managerPlay()
 
 		clearMessage();
 
+        //End Check
+        if (numberOfShips_A == 0)
+        {
+            return PLAYER_B;
+        }
+        else if(numberOfShips_B == 0)
+        {
+            return PLAYER_A;
+        }
+
 		//Player B
 		setMessage("Spieler B ist am Zug.\nBitte gebe ein Feld ein auf welches du schiessen willst:\n");
 		grafikPlay(PLAYER_B);
