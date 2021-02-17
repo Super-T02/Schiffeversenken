@@ -18,7 +18,6 @@
 enum FELDNUMBER { A = 1, B, C, D, E, F, G, H, I, J, K, L };
 enum SCHIFFSTATUS {neutral = 0, ship, fail, hit, destroyed, alreadyTyped};
 enum PLAYER {PLAYER_A = 1, PLAYER_B};
-enum DIRECTION {leftNUM = 0, underNUM, rightNUM, aboveNUM};
 
 //Array defenition
 	//Player A
