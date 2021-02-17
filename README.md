@@ -12,7 +12,7 @@ Nach dem Platzieren der Schiffe werden nun zwei Felder nebeneinander angezeigt u
 Das Spiel ist gewonnen, wenn alle Schiffe eines Spielers versenkt sind. Es wird der Sieger angezeigt, im Verliererfeld die verbleibenden Schiffe eingefügt und die Frage nach einem erneuten Spiel gestellt.
 
 ## Entwicklerdokumentation
-Damit das Spiel richtig compiliert wird, wird ein **CMake Compiler** benötigt.
+Damit das Spiel richtig compiliert wird, wird ein **gcc Compiler** benötigt.
 Die Spielfelder der zwei Player sind als Array der Größe 14 abgespeichert und werden in der Main mit dem Status neutral befüllt. Der äußere Ring dient als Puffer.
 Es wurden drei Enums initialisiert: 
 - Die Status der Array werden als Zahlen von 0 bis 5 deklariert.
