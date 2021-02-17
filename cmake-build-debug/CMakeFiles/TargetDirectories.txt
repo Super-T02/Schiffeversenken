@@ -1,0 +1,3 @@
+C:/Users/tomfr/CLionProjects/Schiffeversenken/cmake-build-debug/CMakeFiles/Schiffeversenken.dir
+C:/Users/tomfr/CLionProjects/Schiffeversenken/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tomfr/CLionProjects/Schiffeversenken/cmake-build-debug/CMakeFiles/rebuild_cache.dir
