@@ -10,6 +10,10 @@
 #define INPUT_LENGTH 10
 #define NUMBER_OF_SHIPS 10
 
+//DEBUGMODE
+#define DEBUG 0
+
+
 //Enums
 enum FELDNUMBER { A = 1, B, C, D, E, F, G, H, I, J, K, L };
 enum SCHIFFSTATUS {neutral = 0, ship, fail, hit, destroyed, alreadyTyped};

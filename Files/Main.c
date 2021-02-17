@@ -1,5 +1,4 @@
 #include "Global.h"
-
 int main()
 {
 	int winner;
@@ -26,9 +25,27 @@ int main()
 
 		clearMessage();
 
+#if DEBUG == 1
+        playerA[1][1] = ship;
+        playerA[1][2] = ship;
 
+        playerA[4][1] = ship;
+        playerA[5][1] = ship;
+        playerA[6][1] = ship;
+        numberOfShips_A = 2;
 
+        playerB[1][1] = ship;
+        playerB[1][2] = ship;
+
+        playerB[4][1] = ship;
+        playerB[5][1] = ship;
+        playerB[6][1] = ship;
+        numberOfShips_B = 2;
+#endif
+
+#if DEBUG != 1
 		managerStart();
+#endif
 		winner = managerPlay();
 		
 		if (winner == PLAYER_A)
@@ -44,7 +61,7 @@ int main()
 			grafikEnd();
 		}
 
-		scanf_s(" %c", &input);
+        scanf_s(" %c", &input);
 
 	} while (input == 'j' || input == 'J');
 	

@@ -5,7 +5,11 @@ int managerPlay()
 	int x, y, status;
 
 	clearMessage();
-	//What's happening
+#if DEBUG == 1
+    setMessage("Es wurde ein Schiff für beide Spieler auf [A1 - B1] und [A4 - A6] vorbereitet (zum Testen)!\n");
+#endif
+
+    //What's happening
 	do
 	{
 		
@@ -79,11 +83,11 @@ int managerPlay()
 	//End
 	if (numberOfShips_A == 0)
 	{
-		return PLAYER_A;
+		return PLAYER_B;
 	}
 	else if(numberOfShips_B == 0)
 	{
-		return PLAYER_B;
+		return PLAYER_A;
 	}
 }
 
@@ -364,7 +368,7 @@ int checkDestroy(int actualPlayer, int x, int y)
 			}
 
 			//replace hit with destroyed
-			while (playerB[startY][startX] == hit || playerB[y + 1][x] == ship)
+			while (playerB[startY][startX] == hit || playerB[y][x + 1] == ship)
 			{
 				playerB[startY][startX] = destroyed;
 				startY++;
@@ -391,7 +395,7 @@ int checkDestroy(int actualPlayer, int x, int y)
 			}
 
 			//replace hit with destroyed
-			while (playerB[startY][startX] == hit || playerB[y + 1][x] == ship)
+			while (playerB[startY][startX] == hit || playerB[y][x + 1] == ship)
 			{
 				playerB[startY][startX] = destroyed;
 				startX++;
