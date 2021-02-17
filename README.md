@@ -1,5 +1,6 @@
 # Schiffeversenken
 Das bekannte Spiel Schiffeversenken für 2 Spieler auf einem PC.
+
 *Dies ist eine Projektarbeit von Maximilian Nagel und Tom Freudenmann für das Modul Programmieren I.*
 
 ## Benutzerdokumentation
